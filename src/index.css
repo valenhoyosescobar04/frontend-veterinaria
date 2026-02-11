@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    --primary: 203 89% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 164 76% 46%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 164 76% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 203 89% 42%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 25% 27%;
+    --sidebar-primary: 203 89% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 215 25% 27%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 203 89% 42%;
+    
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 215 28% 17%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 28% 20%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 28% 20%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 203 89% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 164 76% 46%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 28% 25%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 164 76% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 28% 25%;
+    --input: 215 28% 25%;
+    --ring: 203 89% 53%;
+    
+    --sidebar-background: 215 28% 20%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 203 89% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 28% 25%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 28% 25%;
+    --sidebar-ring: 203 89% 53%;
+    
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Sobrescribir bg-primary para usar el degradado indigo-violeta-fucsia */
+  .bg-primary {
+    background: linear-gradient(to right, rgb(79, 70, 229), rgb(139, 92, 246), rgb(217, 70, 239)) !important;
+  }
+  
+  /* Para dark mode */
+  .dark .bg-primary {
+    background: linear-gradient(to right, rgb(99, 102, 241), rgb(139, 92, 246), rgb(232, 121, 249)) !important;
+  }
+  
+  /* Hover states */
+  .hover\:bg-primary\/90:hover {
+    background: linear-gradient(to right, rgb(67, 56, 202), rgb(124, 58, 237), rgb(192, 38, 211)) !important;
+    opacity: 0.9;
+  }
+  
+  .dark .hover\:bg-primary\/90:hover {
+    background: linear-gradient(to right, rgb(79, 70, 229), rgb(124, 58, 237), rgb(217, 70, 239)) !important;
+    opacity: 0.9;
+  }
+  
+  /* Texto con degradado indigo-violeta-fucsia para text-primary */
+  .text-primary {
+    background: linear-gradient(to right, rgb(79, 70, 229), rgb(139, 92, 246), rgb(217, 70, 239));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Para dark mode - degradado más claro */
+  .dark .text-primary {
+    background: linear-gradient(to right, rgb(99, 102, 241), rgb(139, 92, 246), rgb(232, 121, 249));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Hover del sidebar con degradado más claro */
+  .sidebar-item-hover:hover {
+    background: linear-gradient(to right, rgba(79, 70, 229, 0.1), rgba(139, 92, 246, 0.1), rgba(217, 70, 239, 0.1)) !important;
+  }
+
+  .dark .sidebar-item-hover:hover {
+    background: linear-gradient(to right, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15), rgba(232, 121, 249, 0.15)) !important;
+  }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Historia Clínica - {{patientName}}</title>
+    <style>
+        @media print {
+            @page { margin: 2cm; }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            border-bottom: 3px solid #4F46E5;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #4F46E5;
+            margin: 0;
+            font-size: 24px;
+        }
+        .header-info {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+        .section-title {
+            background: #4F46E5;
+            color: white;
+            padding: 10px 15px;
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .section-content {
+            border: 1px solid #ddd;
+            border-top: none;
+            padding: 15px;
+            background: #f9f9f9;
+            line-height: 1.6;
+        }
+        .vitals {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .vital-item {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .vital-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .vital-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+        }
+        .badge {
+            display: inline-block;
+            background: #F59E0B;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>HISTORIA CLÍNICA VETERINARIA</h1>
+        <div class="header-info">
+            <strong>Paciente:</strong> {{patientName}} | 
+            <strong>Consulta #{{id}}</strong> | 
+            <strong>Fecha:</strong> {{recordDate}} {{recordTime}}
+            {{#if followUpRequired}}<span class="badge">SEGUIMIENTO REQUERIDO</span>{{/if}}
+        </div>
+    </div>
+
+    <div class="vitals">
+        <div class="vital-item">
+            <div class="vital-label">Peso</div>
+            <div class="vital-value">{{weight}}</div>
+        </div>
+        <div class="vital-item">
+            <div class="vital-label">Temperatura</div>
+            <div class="vital-value">{{temperature}}</div>
+        </div>
+        <div class="vital-item">
+            <div class="vital-label">Frec. Cardíaca</div>
+            <div class="vital-value">{{heartRate}}</div>
+        </div>
+    </div>
+
+    {{#if symptoms}}
+    <div class="section">
+        <h2 class="section-title">Síntomas Reportados</h2>
+        <div class="section-content">{{symptoms}}</div>
+    </div>
+    {{/if}}
+
+    <div class="section">
+        <h2 class="section-title">Diagnóstico Médico</h2>
+        <div class="section-content">{{diagnosis}}</div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Plan de Tratamiento</h2>
+        <div class="section-content">{{treatment}}</div>
+    </div>
+
+    {{#if notes}}
+    <div class="section">
+        <h2 class="section-title">Notas Clínicas</h2>
+        <div class="section-content">{{notes}}</div>
+    </div>
+    {{/if}}
+
+    <div class="footer">
+        <div><strong>Veterinario:</strong> Dr. {{veterinarianName}}</div>
+        {{#if followUpDate}}<div style="margin-top: 5px;"><strong>Próxima Visita:</strong> {{followUpDate}}</div>{{/if}}
+        <div style="margin-top: 10px; font-size: 10px;">
+            Generado el {{generatedDate}} | VetClinic Pro
+        </div>
+    </div>
+</body>
+</html>
+
