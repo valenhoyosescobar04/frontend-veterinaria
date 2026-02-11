@@ -56,7 +56,7 @@ The frontend follows modern client-side architecture principles:
 Clone the repository:
 
 ```bash
-[git clone https://github.com/your-repo/frontend-vetclinic.git](https://github.com/valenhoyosescobar04/frontend-veterinaria.git)
+https://github.com/valenhoyosescobar04/frontend-veterinaria.git
 cd frontend-veterinaria
 ```
 
